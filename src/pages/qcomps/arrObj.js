@@ -9,26 +9,24 @@ const initialList = [
 
 export default function BucketList() {
   const [myList, setMyList] = useState(initialList);
-  const [yourList, setYourList] = useState(
-    initialList
-  );
+  const [yourList, setYourList] = useState(initialList);
 
   function handleToggleMyList(artworkId, nextSeen) {
     const tmpList = myList.map(e => {
-        if (e.id === artworkId) {
-            e.seen = nextSeen
-        }
-        return e
+      if (e.id === artworkId) {
+        e.seen = nextSeen;
+      }
+      return { ...e };
     });
     setMyList(tmpList);
   }
 
   function handleToggleYourList(artworkId, nextSeen) {
     const tmpList = yourList.map(e => {
-        if (e.id === artworkId) {
-            e.seen = nextSeen
-        }
-        return e
+      if (e.id === artworkId) {
+        e.seen = nextSeen;
+      }
+      return { ...e };
     });
     setYourList(tmpList);
   }
@@ -37,13 +35,9 @@ export default function BucketList() {
     <>
       <h1>Art Bucket List</h1>
       <h2>My list of art to see:</h2>
-      <ItemList
-        artworks={myList}
-        onToggle={handleToggleMyList} />
+      <ItemList artworks={myList} onToggle={handleToggleMyList} />
       <h2>Your list of art to see:</h2>
-      <ItemList
-        artworks={yourList}
-        onToggle={handleToggleYourList} />
+      <ItemList artworks={yourList} onToggle={handleToggleYourList} />
     </>
   );
 }
@@ -58,10 +52,7 @@ function ItemList({ artworks, onToggle }) {
               type="checkbox"
               checked={artwork.seen}
               onChange={e => {
-                onToggle(
-                  artwork.id,
-                  e.target.checked
-                );
+                onToggle(artwork.id, e.target.checked);
               }}
             />
             {artwork.title}
