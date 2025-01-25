@@ -1,6 +1,6 @@
 ## Personal Information:
 
-Full Name: Rachana Kallada Jayaraj
+Full Name:Rachana Kallada Jayaraj
 
 ## Getting Started
 First, fork this repository and clone it to your local machine.
